@@ -36,14 +36,14 @@
             android:weightSum="1"
             >
             <EditText
-                android:id="@+id/member_id_reg"
+                android:id="@+id/member_id_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="아이디를 입력하세요"
                 />
         </LinearLayout>
         <EditText
-            android:id="@+id/member_pwd_reg"
+            android:id="@+id/member_pwd_login"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="비밀번호를 입력해주세요"
@@ -51,11 +51,12 @@
 
 
         <Button
-            android:id="@+id/member_reg_btn"
+            android:id="@+id/member_login_btn"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="로그인"/>
         <Button
+            android:id="@+id/member_login_back"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="취소"
