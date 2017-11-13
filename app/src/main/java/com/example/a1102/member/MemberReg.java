@@ -1,5 +1,6 @@
 package com.example.a1102.member;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +11,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.a1102.R;
+import com.example.a1102.dbhelper.DBHelper;
 
 /* 회원가입 폼 액티비티 정의 부분 */
 public class MemberReg extends AppCompatActivity implements View.OnClickListener{
+
+    DBHelper dbHelper;
+
+
     RadioGroup gender_group; //성별 라디오그룹
     RadioButton rbtn_man, rbtn_woman, rbtn_etc; //라디오 버튼 남자, 여자, 기타
     EditText name_edit, nick_name_edit, id_edit, pwd_edit, pwd_edit_check; // 이름, 닉네임, 아이디, 비밀번호, 비밀번호체크

@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.example.a1102.dbhelper.DBHelper;
 import com.example.a1102.member.MemberLogin;
 
 /**
@@ -16,10 +17,14 @@ import com.example.a1102.member.MemberLogin;
 
 public class IntroActivity extends AppCompatActivity{
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro);
+
+        DBHelper dbHelper = new DBHelper(getApplicationContext(),"unknown.db",null,1); //
+
 
         ImageView imageView = (ImageView)findViewById(R.id.intro_gif);
 
