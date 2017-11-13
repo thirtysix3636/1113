@@ -18,6 +18,7 @@ import com.example.a1102.R;
 public class MemberLogin extends AppCompatActivity implements View.OnClickListener{
     EditText id_edit, pwd_edit; // 아이디, 패스워드 폼
     Button login_btn, back_btn; // 로그인, 뒤로가기 버튼
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
