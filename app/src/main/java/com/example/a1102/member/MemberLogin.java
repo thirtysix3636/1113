@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.a1102.MainActivity;
 import com.example.a1102.R;
 
 /**
@@ -47,7 +48,8 @@ public class MemberLogin extends AppCompatActivity implements View.OnClickListen
         switch (view.getId()){
             /* 로그인 버튼 */
             case R.id.member_login_btn:
-
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
                 break;
             /* 뒤로가기 버튼 */
             case R.id.member_login_back:
