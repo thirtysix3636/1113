@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         home_btn.setOnClickListener(this);
 
         main_top_layout = (LinearLayout)findViewById(R.id.main_top_layout);
-
         drawerLayout = (DrawerLayout) findViewById(R.id.left_Drawer);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
