@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         list_btn.setOnClickListener(this);
         home_btn.setOnClickListener(this);
 
+
         main_top_layout = (LinearLayout)findViewById(R.id.main_top_layout);
         drawerLayout = (DrawerLayout) findViewById(R.id.left_Drawer);
 
