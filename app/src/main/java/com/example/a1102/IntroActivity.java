@@ -39,7 +39,7 @@ public class IntroActivity extends AppCompatActivity{
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-                Intent intent = new Intent(getApplicationContext(), MemberReg.class);
+                Intent intent = new Intent(getApplicationContext(), HelloActivity.class);
                 startActivity(intent);
                 overridePendingTransition(0,0);
                 finish();

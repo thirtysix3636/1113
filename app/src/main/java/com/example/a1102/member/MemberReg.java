@@ -11,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.example.a1102.HelloActivity;
 import com.example.a1102.MainActivity;
 import com.example.a1102.R;
 import com.example.a1102.dbhelper.DBHelper;
@@ -66,6 +68,7 @@ public class MemberReg extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
+        Intent intent;
         switch (view.getId()){
             /* 중복확인 버튼 */
             case R.id.member_id_check:
@@ -83,17 +86,29 @@ public class MemberReg extends AppCompatActivity implements View.OnClickListener
                 phone = Integer.parseInt(phone_edit.getText().toString());
                 gender = gender_group.getCheckedRadioButtonId();
 
-                db.execSQL("insert into member (_id, name, nick_name, pwd," +
-                        "phone, gender) values ( '" +id+"',"+
-                        "'" +name+"',"+
-                        "'" +nick_name+"',"+
-                        "'" +pwd+"',"+
-                        "" +phone+","+
-                        "" +1+
-                        ")");
-                db = dbHelper.getReadableDatabase();
-/*
+                try {
 
+                    db.execSQL("insert into member (_id, name, nick_name, pwd," +
+                            "phone, gender) values ( '" + id + "'," +
+                            "'" + name + "'," +
+                            "'" + nick_name + "'," +
+                            "'" + pwd + "'," +
+                            "" + phone + "," +
+                            "" + 1 +
+                            ")");
+                    db = dbHelper.getReadableDatabase();
+
+                    intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("id_value", id);
+                    db.close();
+                    startActivity(intent);
+                    finish();
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),"양식에 맞춰 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }
+/*
                 String sql=  "select * from member order by _id desc";
                 Cursor cursor = db.rawQuery(sql,null);
                 while(cursor.moveToNext()){
@@ -102,15 +117,12 @@ public class MemberReg extends AppCompatActivity implements View.OnClickListener
                     System.out.println(cursor.getString(1));
                 }
 */
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("id_value", id);
-                db.close();
-                startActivity(intent);
-                finish();
                 break;
             /* 뒤로가기 버튼 */
             case R.id.member_reg_back:
-
+                intent = new Intent(getApplicationContext(), HelloActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0,0);
                 break;
         }
     }

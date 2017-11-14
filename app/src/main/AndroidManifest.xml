@@ -27,6 +27,7 @@ I
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".HelloActivity"/>
         <activity android:name=".member.MemberReg"/>
         <activity android:name=".member.MemberLogin"/>
         <activity android:name=".MainActivity"/>
@@ -38,7 +39,6 @@ I
         <activity android:name=".WriteActivityCheck" />
         <activity android:name=".CameraSearchActivity" />
         <activity android:name=".AddressFindActivity" />
-        <activity android:name=".IndexLoginActivity"></activity>
         <activity android:name=".BoardActivity"></activity>
         <activity android:name=".PhotoTestActivity"></activity>
 

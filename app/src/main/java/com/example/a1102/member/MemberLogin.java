@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.a1102.HelloActivity;
 import com.example.a1102.MainActivity;
 import com.example.a1102.R;
 
@@ -32,7 +33,7 @@ public class MemberLogin extends AppCompatActivity implements View.OnClickListen
 
         /* 버튼 세팅*/
         login_btn = (Button)findViewById(R.id.member_login_btn);
-        back_btn = (Button)findViewById(R.id.member_login_btn);
+        back_btn = (Button)findViewById(R.id.member_login_back);
 
         /* 원클릭리스너 세팅 */
         login_btn.setOnClickListener(this);
@@ -53,7 +54,9 @@ public class MemberLogin extends AppCompatActivity implements View.OnClickListen
                 break;
             /* 뒤로가기 버튼 */
             case R.id.member_login_back:
-
+                intent = new Intent(getApplicationContext(), HelloActivity.class);
+                startActivity(intent);
+                overridePendingTransition(0,0);
                 break;
         }
     }
