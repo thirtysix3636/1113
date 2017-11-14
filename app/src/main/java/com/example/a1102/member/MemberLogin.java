@@ -1,16 +1,20 @@
 package com.example.a1102.member;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.a1102.HelloActivity;
 import com.example.a1102.MainActivity;
 import com.example.a1102.R;
+import com.example.a1102.dbhelper.DBHelper;
 
 /**
  * Created by Jeff_Hwang on 2017. 11. 13..
@@ -20,7 +24,11 @@ import com.example.a1102.R;
 public class MemberLogin extends AppCompatActivity implements View.OnClickListener{
     EditText id_edit, pwd_edit; // 아이디, 패스워드 폼
     Button login_btn, back_btn; // 로그인, 뒤로가기 버튼
-
+    DBHelper dbHelper;
+    SQLiteDatabase db;
+    String sql , id, pwd;
+    Cursor cursor;
+    String pwd_confirm;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,9 +57,28 @@ public class MemberLogin extends AppCompatActivity implements View.OnClickListen
         switch (view.getId()){
             /* 로그인 버튼 */
             case R.id.member_login_btn:
-                intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+
+                dbHelper = new DBHelper(getApplicationContext());
+                db = dbHelper.getReadableDatabase();
+                id = id_edit.getText().toString();
+                pwd = pwd_edit.getText().toString();
+
+                sql = "select * from member where _id = '"+id+"'";
+                cursor = db.rawQuery(sql,null);
+
+                while(cursor.moveToNext()){
+                    pwd_confirm = cursor.getString(3);
+                }
+
+                if(pwd_confirm.equals(pwd)) {
+                    intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("id_put", id);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(), "아이디와 비밀번호를 확인해주세요.",Toast.LENGTH_SHORT).show();
+                }
                 break;
+
             /* 뒤로가기 버튼 */
             case R.id.member_login_back:
                 intent = new Intent(getApplicationContext(), HelloActivity.class);

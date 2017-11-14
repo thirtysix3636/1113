@@ -44,10 +44,10 @@
 
         <LinearLayout
             android:id="@+id/main_top_layout"
-            android:background="#609900"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:background="#609900"
             android:orientation="horizontal"
             android:weightSum="1">
 
@@ -56,19 +56,31 @@
                 android:layout_width="35dp"
                 android:layout_height="40dp"
                 android:background="@android:drawable/ic_menu_sort_by_size" />
+
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Title"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:layout_weight="1"/>
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/home_btn"
                 android:layout_width="35dp"
                 android:layout_height="40dp"
                 android:background="@drawable/ic_home" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
 
     </FrameLayout>
