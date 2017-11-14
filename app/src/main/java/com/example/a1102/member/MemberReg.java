@@ -73,6 +73,7 @@ public class MemberReg extends AppCompatActivity implements View.OnClickListener
             /* 중복확인 버튼 */
             case R.id.member_id_check:
 
+
                 break;
             /* 회원가입 버튼 */
             case R.id.member_reg_btn:
