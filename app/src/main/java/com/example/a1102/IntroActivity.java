@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.example.a1102.dbhelper.DBHelper;
 import com.example.a1102.member.MemberLogin;
+import com.example.a1102.member.MemberReg;
 
 /**
  * Created by Jeff_Hwang on 2017. 11. 13..
@@ -22,8 +23,6 @@ public class IntroActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro);
-
-        DBHelper dbHelper = new DBHelper(getApplicationContext(),"unknown.db",null,1); //
 
 
         ImageView imageView = (ImageView)findViewById(R.id.intro_gif);
@@ -40,7 +39,7 @@ public class IntroActivity extends AppCompatActivity{
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-                Intent intent = new Intent(getApplicationContext(), MemberLogin.class);
+                Intent intent = new Intent(getApplicationContext(), MemberReg.class);
                 startActivity(intent);
                 overridePendingTransition(0,0);
                 finish();

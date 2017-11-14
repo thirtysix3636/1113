@@ -27,6 +27,7 @@ I
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".member.MemberReg"/>
         <activity android:name=".member.MemberLogin"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".MyInfo" />

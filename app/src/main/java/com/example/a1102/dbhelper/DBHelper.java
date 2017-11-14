@@ -10,25 +10,35 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     // DBHelper 생성자로 관리할 DB 이름과 버전 정보를 받음
-    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DBHelper(Context context) {
+        super(context, "test.db", null, 1);
     }
 
     // DB를 새로 생성할 때 호출되는 함수
     @Override
     public void onCreate(SQLiteDatabase db) {
     //테이블 생성
-        db.execSQL("create table user_inform (" +
-                "id char(20) not null primary key," +
-                "password char(10) not null," +
-                "name char(8) not null," +
-                "nickname char(20) not null," +
-                "tel char(13) not null," +
-                "authentic char(30)," +
-                "sex int check(1,2,3)," +
-                "star int default 0," +
-                "keyword char(20)" +
-                ")");
+        String member, board, chat, exchange, location, exchange_reserve; //회원,게시판, 채팅, 거래, 위치 거래예약
+
+        /* 회원 테이블 sql 정의 및 실행 */
+        member = "create table if not exists member(_id text not null primary key," +
+                "name text not null," +
+                "nick_name text not null," +
+                "pwd text not null," +
+                "phone text not null," +
+                "gender integer not null)";
+        db.execSQL(member);
+
+
+        board = "create table if not exists board(board_id integer not null primary key, " +
+                "board_title text not null," +  //게시글 제목
+                "board_name text not null," + // 작성자 이름
+                "board_price integer not null default 0," + //제품 가격
+                "board_content text not null,"+ //본문 내용
+                "board_location_x integer," + //지도 경도
+                "board_location_y integer," + // 지도 위도
+                "board_reply_id integer not null)"; // 댓글
+        db.execSQL(board);
 
     }
 
