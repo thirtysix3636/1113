@@ -232,11 +232,12 @@
                     android:layout_height="wrap_content"
                     android:text="매물상태"
                     />
-
                 <Spinner
                     android:id="@+id/productSpinner"
                     android:layout_width="200dp"
-                    android:layout_height="25dp"/>
+                    android:layout_height="25dp"
+                    android:entries="@array/statue_arrays"
+                    />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -259,15 +260,17 @@
                     app:layout_constraintLeft_toRightOf="@+id/negoView"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/productSpinner" />
-
                 </LinearLayout>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
                 <Button
                     android:id="@+id/submit_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="등록하기"
                     />
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
     </FrameLayout>
