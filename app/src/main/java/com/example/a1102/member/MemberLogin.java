@@ -57,25 +57,29 @@ public class MemberLogin extends AppCompatActivity implements View.OnClickListen
         switch (view.getId()){
             /* 로그인 버튼 */
             case R.id.member_login_btn:
-
                 dbHelper = new DBHelper(getApplicationContext());
                 db = dbHelper.getReadableDatabase();
                 id = id_edit.getText().toString();
                 pwd = pwd_edit.getText().toString();
 
                 sql = "select * from member where _id = '"+id+"'";
-                cursor = db.rawQuery(sql,null);
+                try {
+                    cursor = db.rawQuery(sql, null);
 
-                while(cursor.moveToNext()){
-                    pwd_confirm = cursor.getString(3);
+                    while (cursor.moveToNext()) {
+                        pwd_confirm = cursor.getString(3);
+                    }
+
+                    if (pwd_confirm.equals(pwd)) {
+                        intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.putExtra("id_put", id);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "아이디와 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
+                    }
                 }
-
-                if(pwd_confirm.equals(pwd)) {
-                    intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("id_put", id);
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(getApplicationContext(), "아이디와 비밀번호를 확인해주세요.",Toast.LENGTH_SHORT).show();
+                catch (Exception e){
+                    e.printStackTrace();
                 }
                 break;
 

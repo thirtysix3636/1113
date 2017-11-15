@@ -47,13 +47,11 @@ public class WriteActivity extends AppCompatActivity implements View.OnClickList
 
         list_btn = (Button)findViewById(R.id.list_menu_btn);
         home_btn = (Button)findViewById(R.id.home_btn);
-        getPicture = (TextView)findViewById(R.id.getPicture);
         address_btn = (Button) findViewById(R.id.addressButton);
         descriptionText = (EditText) findViewById(R.id.descriptionText);
         addressText = (TextView)findViewById(R.id.addressTextRes);
         addressTextRes = (TextView)findViewById(R.id.addressTextRes);
 
-        openDatabase("userdb"); // sqlite 연결
 
 
         try{
@@ -82,16 +80,6 @@ public class WriteActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-
-        getPicture.setOnClickListener(new View.OnClickListener( // 사진 가져오기
-
-        ) {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CameraSearchActivity.class);
-                startActivity(intent);
-            }
-        });
 
         address_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -298,17 +286,7 @@ public class WriteActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    public void openDatabase(String dataBase){
-        userDb = openOrCreateDatabase(dataBase, MODE_PRIVATE, null);
 
-        // 데이터베이스 연결 확인용
-        if(userDb != null){
-
-        }else{
-            //db 오픈 실패
-            Toast.makeText(getApplicationContext(),"개인 정보를 불러오지 못했습니다.", Toast.LENGTH_SHORT).show();
-        }
-    }
 }
 
 
